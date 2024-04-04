@@ -31,7 +31,7 @@ def world_clock_page():
 
     # Create placeholders for displaying time
     time_placeholders = {city['name']: st.empty() for city in cities}
-    timestamp_placeholders = {city['name']: st.empty() for city in cities}
+    timestamp_placeholder = st.empty()
 
     # Display current time for selected cities
     while True:
@@ -39,8 +39,8 @@ def world_clock_page():
             if city['name'] in selected_cities:
                 current_time = get_current_time(city)
                 time_placeholders[city['name']].text(f"{city['name']}: {current_time}")
-                # Display UNIX timestamp
-                timestamp_placeholders[city['name']].text(f"UNIX Timestamp ({city['name']}): {get_unix_timestamp()}")
+        # Display UNIX timestamp
+        timestamp_placeholder.text(f"UNIX Timestamp: {get_unix_timestamp()}")
         time.sleep(1)  # Update every second
 
 # Convert UNIX timestamp to human-readable time page
